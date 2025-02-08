@@ -47,6 +47,33 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 Press **Y** when asked to change your default shell.
 
+### **Install Plugins for Zsh**
+
+Enhance your Zsh experience with the following plugins:
+
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
+
+Edit the Zsh configuration file:
+
+```bash
+nano ~/.zshrc
+```
+
+Find the `plugins=` line and modify it:
+
+```bash
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+```
+
+Save and exit (**Ctrl + X**, then **Y**, then **Enter**), then apply the changes:
+
+```bash
+source ~/.zshrc
+```
+
 ---
 
 ## **4. Install Powerlevel10k for a Beautiful Terminal**
@@ -71,7 +98,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
    ```bash
    ZSH_THEME="powerlevel10k/powerlevel10k"
    ```
-3. Save and exit (**Ctrl + X**, then **Y**, then **Enter**).
+3. Save and exit.
 4. Apply changes:
    ```bash
    source ~/.zshrc
@@ -80,7 +107,56 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 ---
 
-## **5. Set VS Code to Use Ubuntu (WSL) Terminal**
+## **5. Install Neovim for an Improved Terminal Editor**
+
+### **Install Neovim**
+
+```bash
+sudo apt install -y neovim
+```
+
+### **Set Neovim as the Default Editor**
+
+```bash
+echo "export EDITOR=nvim" >> ~/.zshrc
+source ~/.zshrc
+```
+
+### **Enhance Neovim with Plugins**
+
+1. Install **vim-plug** (plugin manager for Neovim):
+   ```bash
+   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+   ```
+2. Open Neovim and edit the config file:
+   ```bash
+   nvim ~/.config/nvim/init.vim
+   ```
+3. Add the following basic plugin setup:
+
+   ```vim
+   call plug#begin()
+   Plug 'morhetz/gruvbox'
+   Plug 'tpope/vim-sensible'
+   Plug 'junegunn/fzf.vim'
+   call plug#end()
+
+   syntax on
+   colorscheme gruvbox
+   set number
+   ```
+
+4. Save and exit **(Esc, then type `:wq`)**.
+5. Install the plugins inside Neovim:
+   ```vim
+   :PlugInstall
+   ```
+6. Restart Neovim for changes to take effect.
+
+---
+
+## **6. Set VS Code to Use Ubuntu (WSL) Terminal**
 
 ### **Install WSL Extension in VS Code**
 
@@ -104,7 +180,7 @@ code .
 
 ---
 
-## **6. Install Node.js, npm, and Git in Ubuntu**
+## **7. Install Node.js, npm, and Git in Ubuntu**
 
 ### **Install Node.js and npm**
 
@@ -138,7 +214,7 @@ npm -v
 
 ---
 
-## **7. Useful Commands to Test Your Setup**
+## **8. Useful Commands to Test Your Setup**
 
 - **Check Ubuntu version:**
   ```bash
@@ -160,12 +236,12 @@ npm -v
 
 ---
 
-## **8. Accessing Ubuntu Files from Windows**
+## **9. Accessing Ubuntu Files from Windows**
 
 Your Ubuntu files are stored inside WSL. You can access them in **Windows File Explorer** by typing:
 
 ```plaintext
-\\wsl.localhost\Ubuntu\home\vladi
+\\wsl.localhost\Ubuntu\home\<your-ubuntu-yourname>
 ```
 
 Or navigate to:
@@ -176,7 +252,7 @@ C:\Users\YourWindowsUsername\AppData\Local\Packages\CanonicalGroupLimited...\Loc
 
 ---
 
-## **9. Moving Old Projects to WSL**
+## **10. Moving Old Projects to WSL**
 
 1. Move your old project folders to:
    ```plaintext
@@ -184,9 +260,14 @@ C:\Users\YourWindowsUsername\AppData\Local\Packages\CanonicalGroupLimited...\Loc
    ```
 2. Open **VS Code** and navigate to the folder inside WSL.
 3. Run it in **Ubuntu terminal** using:
+
    ```bash
    cd ~/your-project-folder
    code .
+   ```
+
+   ```
+
    ```
 
 ✅ **Now you have the perfect dual-terminal setup: Windows for daily tasks & Ubuntu for development!** 🚀
