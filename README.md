@@ -171,7 +171,7 @@ Your Ubuntu files are stored inside WSL. You can access them in **Windows File E
 Or navigate to:
 
 ```plaintext
-C:\Users\YourWindowsUsername\AppData\Local\Packages\CanonicalGroupLimited...\LocalState\rootfs\home\vladi
+C:\Users\YourWindowsUsername\AppData\Local\Packages\CanonicalGroupLimited...\LocalState\rootfs\home\<your-ubuntu-username>
 ```
 
 ---
@@ -180,7 +180,7 @@ C:\Users\YourWindowsUsername\AppData\Local\Packages\CanonicalGroupLimited...\Loc
 
 1. Move your old project folders to:
    ```plaintext
-   /home/vladi/
+   /home/<your-ubuntu-username>/
    ```
 2. Open **VS Code** and navigate to the folder inside WSL.
 3. Run it in **Ubuntu terminal** using:
